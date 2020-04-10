@@ -1,0 +1,73 @@
+{
+	"name": "vscode-sql-schema-editor",
+	"displayName": "vscode-sql-schema-editor",
+	"description": "A sql schema editor for vscode",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.44.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCustomEditor:sqlSchemaEditor"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "vscode-sql-schema-editor.helloWorld",
+				"title": "Hello World"
+			}
+		],
+		"customEditors": [
+			{
+				"viewType": "sqlSchemaEditor",
+				"displayName": "Sql Schema Editor",
+				"selector": [
+					{
+						"filenamePattern": "*.sql"
+					}
+				]
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "yarn run compile",
+		"compile": "npm-run-all compile:*",
+		"compile:extension": "tsc -p ./",
+		"compile:views": "webpack",
+		"lint": "eslint src --ext ts",
+		"watch": "npm-run-all -p watch:*",
+		"watch:extension": "tsc -watch -p ./",
+		"watch:views": "webpack --watch --mode development",
+		"pretest": "yarn run compile && yarn run lint",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^7.0.2",
+		"@types/node": "^13.11.0",
+		"@types/react": "^16.9.34",
+		"@types/react-dom": "^16.9.6",
+		"@types/vscode": "^1.44.0",
+		"@typescript-eslint/eslint-plugin": "^2.26.0",
+		"@typescript-eslint/parser": "^2.26.0",
+		"css-loader": "^3.5.1",
+		"eslint": "^6.8.0",
+		"glob": "^7.1.6",
+		"mocha": "^7.1.1",
+		"npm-run-all": "^4.1.5",
+		"style-loader": "^1.1.3",
+		"ts-loader": "^6.2.2",
+		"typescript": "^3.8.3",
+		"vscode-test": "^1.3.0"
+	},
+	"dependencies": {
+		"react": "^16.13.1",
+		"react-dom": "^16.13.1",
+		"sql-ddl-to-json-schema": "^4.0.1",
+		"webpack": "^4.42.1",
+		"webpack-cli": "^3.3.11"
+	}
+}
